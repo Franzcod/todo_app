@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
+import Nav from "./components/Nav/Nav.js";
+import Home from "./components/Home/Home.js";
+import AddTodo from "./components/AddTodo/AddTodo";
+import TodoDetail from "./components/TodoDetail/TodoDetail";
 
-function App() {
+function App({ todos }) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/" component={Nav} />
+      <Route exact path="/" component={Home} />
+      {/*<Route exact path="/add" component={AddTodo}   />*/}
+      <Route
+        exact
+        path="/add"
+        render={({ history }) => {
+          return <AddTodo push={history.push} />;
+        }}
+      />
+      {/*<Route exact path="/edit/:id" component={TodoDetail} />*/}
+      <Route
+        path="/edit/:id"
+        exact
+        render={({ match, history }) => {
+          const todo = todos.find((el) => el.id === parseInt(match.params.id));
+          return <TodoDetail todo={todo} push={history.push} />;
+        }}
+      />
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    todos: state,
+  };
+}
+
+export default connect(mapStateToProps)(App);
