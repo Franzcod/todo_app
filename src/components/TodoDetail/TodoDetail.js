@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import styles from "./../TodoDetail/TodoDetail.module.css";
+import Swal from "sweetalert2";
 
 import { removeTodo, toInProgress, toDone } from "../../actions/index";
 
 function TodoDetail({ todo, removeTodo, toInProgress, toDone, push }) {
-  console.log(todo);
+  // console.log(todo);
 
   return (
     <div className={styles.divRey}>
@@ -38,8 +39,23 @@ function TodoDetail({ todo, removeTodo, toInProgress, toDone, push }) {
         </button>
         <button
           onClick={() => {
-            removeTodo(todo.id);
-            push("/");
+            Swal.fire({
+              title: "Do you want to remove task?",
+              showDenyButton: true,
+              // showCancelButton: true,
+              confirmButtonText: `Remove`,
+              denyButtonText: `Cancel`,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                let idBorrar = todo.id;
+                push("/");
+                removeTodo(idBorrar);
+                push("/");
+                Swal.fire("Task remove!", "", "success");
+              } else if (result.isDenied) {
+                Swal.fire("Task is not Remove", "", "info");
+              }
+            });
           }}
         >
           Remove
