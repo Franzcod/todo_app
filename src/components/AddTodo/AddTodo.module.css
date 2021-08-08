@@ -1,5 +1,6 @@
 .divRey {
-    background-color: #F5FDB0;
+    /* background-color: #F5FDB0; */
+    background: linear-gradient(45deg, transparent 9%, #8a8a860b 10%, #f5fdb0f8 8%, #F5FDB0 60%, #F5FDB0);
     margin: 30px auto;
     display: flex;
     justify-content: space-between;
@@ -7,8 +8,34 @@
     padding-right: 20px;
     text-decoration: none;
     color: black;
-    border-radius: 0 30% 0 0;
+    /* border-radius: 0 30% 0 0; */
     max-width: 600px;
+}
+
+.divRey {
+    transform: translateX(0);
+}
+
+.divRey:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 105px;
+    height: 105px;
+    /* background-color: #FF4848; */
+    /* background: linear-gradient(45deg, transparent 45%, #aaa 50%, #ccc 60%, white); */
+    background: linear-gradient(45deg, transparent 45%, #a8aa94 50%, #d1d895 60%, #F5FDB0);
+    transition-duration: 0.2s;
+}
+
+.divRey:hover {
+    background-color: #F5FDB0;
+}
+
+.divRey:hover::before {
+    width: 0px;
+    height: 00px;
 }
 
 .compInput {
@@ -86,5 +113,15 @@ input {
     textarea:focus,
     input:focus {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 830px) {
+    .divRey {
+        background-color: #F5FDB0;
+    }
+
+    .divRey:before {
+        background: none;
     }
 }
