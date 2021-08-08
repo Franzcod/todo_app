@@ -1,18 +1,12 @@
 import React from "react";
+import styles from "./../Todo/Todo.module.css";
 
 export function Todo({ title }) {
-  const style_4 = {
-    textDecoration: "none",
-    color: "white",
-    backgroundColor: "#FF4848",
-    borderRadius: "5px",
-    // paddingBottom: "1px",
-    // fontSize: "1.5rem",
-    // fontWeight: "600",
-    margin: "20px 0px",
-  };
-
-  return <div style={style_4}>{title}</div>;
+  return (
+    <div className={styles.divRey}>
+      <h3>{title}</h3>
+    </div>
+  );
 }
 
 export default Todo;

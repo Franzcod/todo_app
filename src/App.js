@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav.js";
 import Home from "./components/Home/Home.js";
 import AddTodo from "./components/AddTodo/AddTodo";
 import TodoDetail from "./components/TodoDetail/TodoDetail";
+import Footer from "./components/Footer/Footer.js";
 
 function App({ todos }) {
   return (
@@ -29,6 +30,7 @@ function App({ todos }) {
           return <TodoDetail todo={todo} push={history.push} />;
         }}
       />
+      <Route path="/" component={Footer} />
     </div>
   );
 }

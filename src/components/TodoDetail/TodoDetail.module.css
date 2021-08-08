@@ -1,0 +1,82 @@
+.divRey {
+
+    /* background: linear-gradient(-45deg, transparent 5%, #8a8a860b 5.5%, #f5fdb0f8 7%, #F5FDB0 60%, #F5FDB0); */
+    background: linear-gradient(-45deg, transparent 9%, #8a8a860b 10%, #f5fdb0f8 8%, #F5FDB0 60%, #F5FDB0);
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+    text-decoration: none;
+    color: black;
+    width: 60vw;
+    max-width: 500px;
+    margin: 30px auto;
+
+}
+
+
+
+.divRey {
+    transform: translateX(0);
+}
+
+.divRey:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    /* background-color: #FF4848; */
+    /* background: linear-gradient(45deg, transparent 45%, #aaa 50%, #ccc 60%, white); */
+    background: linear-gradient(-45deg, transparent 45%, #a8aa94 50%, #d1d895 60%, #F5FDB0);
+    transition-duration: 0.2s;
+}
+
+.divRey:hover {
+    background-color: #F5FDB0;
+}
+
+.divRey:hover::before {
+    width: 0px;
+    height: 00px;
+}
+
+
+.contImg {
+    display: flex;
+    margin: 10px auto 0px;
+    width: 97%;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.contImg img {
+    width: 10%;
+}
+
+.divRey p {
+    margin: 10px;
+}
+
+.divRey div button {
+    margin: 15px;
+    color: #fff;
+    background-color: #FF4848;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 830px) {
+    .divRey {
+        background-color: #F5FDB0;
+    }
+
+    .divRey:before {
+        background: none;
+    }
+}

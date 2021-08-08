@@ -34,7 +34,7 @@ export function Nav() {
         </Link>
 
         <Link to="/add" style={style_2}>
-          <h3>Add Todo</h3>
+          <h2>+ Add</h2>
         </Link>
       </div>
     </div>

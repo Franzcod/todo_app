@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import { FiSave } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { addTodo } from "../../actions/index";
-// Nota 1: Para utilizar el hook `useState` para el manejo de estados de los inputs, tendras que utilizarlo de la siguiente manera
-//React.useState
+import styles from "./../AddTodo/AddTodo.module.css";
 
-// Nota 2: En este componente tendras que usar la funcion `connect` de react-redux para conectarte al store.
-// Si usas el hook `useDispatch` no funcionaran los test.
 function validate(data) {
   const errors = {};
   if (!data.title) errors.title = "Debe ingresar un titulo";
@@ -18,19 +15,6 @@ function validate(data) {
 }
 
 export function AddTodo({ addTodo, push }) {
-  const style = {
-    backgroundColor: "#F5FDB0",
-    margin: "30px auto",
-    display: "flex",
-    justifyContent: "space-between",
-    paddingLeft: "20px",
-    paddingRight: "80px",
-    textDecoration: "none",
-    color: "black",
-    borderRadius: "0 30% 0 0",
-    maxWidth: "600px",
-  };
-
   const [formData, setFormData] = React.useState({
     title: "",
     description: "",
@@ -90,9 +74,10 @@ export function AddTodo({ addTodo, push }) {
   }
 
   return (
-    <div style={style}>
+    <div className={styles.divRey}>
       <h3 style={{ color: "#FF4848", width: "15%" }}>Add ToDo</h3>
       <form
+        id="form_id"
         onSubmit={handleSubmit}
         style={{ margin: "0 auto", width: "20rem" }}
       >
@@ -124,20 +109,15 @@ export function AddTodo({ addTodo, push }) {
           handleChange={handleChange}
           error={errors.date}
         />
-        <button
-          type="submit"
-          style={{
-            margin: "20px",
-            padding: "10px",
-            backgroundColor: "#FF4848",
-            borderRadius: "16px",
-            color: "white",
-            border: "none",
-          }}
-        >
+        {/*<button type="submit">
           <FiSave />
           ADD
-        </button>
+  </button>*/}
+        <div className={styles.contButton}>
+          <button type="submit" className={styles.button}>
+            <FiSave />
+          </button>
+        </div>
       </form>
     </div>
   );
@@ -145,27 +125,12 @@ export function AddTodo({ addTodo, push }) {
 
 function FormItem({ label, name, value, handleChange, error }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        // width: "20rem",
-        margin: "10px",
-        fontWeight: "600",
-      }}
-    >
-      <label>{label}</label>
-      <input
-        style={{
-          border: "none",
-          margin: "5px",
-          borderRadius: "8px",
-          padding: "5px",
-        }}
-        name={name}
-        value={value}
-        onChange={handleChange}
-      />
+    <div className={styles.compInput}>
+      <div className={styles.label}>
+        <p>{label}</p>
+      </div>
+
+      <input name={name} value={value} onChange={handleChange} />
       <span style={{ color: "red", fontWeight: 700 }}>{error}</span>
     </div>
   );

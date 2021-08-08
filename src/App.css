@@ -4,8 +4,10 @@
 
 body {
   width: 100%;
+  min-height: 60%;
   /* background-color: #F5FDB0; */
   background-image: url('https://i.pinimg.com/originals/0f/da/b7/0fdab7d41c2bb0703e117955260a2e71.jpg');
   /* background-image: url('https://previews.123rf.com/images/scenery1/scenery11302/scenery1130200057/18035925-pizarras-corcho-textura-de-fondo-marr%C3%B3n-hermoso-belleza-.jpg'); */
   background-size: auto;
+
 }

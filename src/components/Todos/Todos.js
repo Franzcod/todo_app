@@ -6,8 +6,8 @@ import styles from "../Todos/Todos.module.css";
 
 export function Todos({ todos, status }) {
   return (
-    <div className={styles.style}>
-      <span className={styles.style_3}>{status}</span>
+    <div className={styles.contRey}>
+      <span className={styles.status}>{status}</span>
 
       {todos
         .filter(function (el) {
@@ -15,7 +15,7 @@ export function Todos({ todos, status }) {
         })
         .map(function (el) {
           return (
-            <Link key={el.id} className={styles.style_2} to={`/edit/${el.id}`}>
+            <Link key={el.id} className={styles.linkTodo} to={`/edit/${el.id}`}>
               <Todo title={el.title} />
             </Link>
           );
@@ -31,7 +31,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Todos);
-
-// <div style={style_4}>
-//                 <p key={el.id}>{`${el.title} `}</p>
-//               </div>
